@@ -13,12 +13,31 @@ function startVoice(){
     }
 }
 
-async function search(){
-    const text = document.getElementById("input").value
+async function sendMessage() {
+    const input = document.getElementById("input");
+    const text = input.value.trim();
 
-    const res = await fetch(`/api/search?q=${text}`)
+    if (!text) return;
 
-    const data = await res.json()
+    addMessage(text, "user");
+    input.value = "";
 
-    document.getElementById("result").textContent = JSON.stringify(data, null, 2)
+    const res = await fetch(`/api/search?q=${encodeURIComponent(text)}`);
+    const data = await res.json();
+
+    // ajuste aqui dependendo do seu backend
+    const answer = data.response || JSON.stringify(data);
+
+    addMessage(answer, "bot");
+}
+
+function addMessage(text, type) {
+    const chat = document.getElementById("chat");
+
+    const msg = document.createElement("div");
+    msg.classList.add("msg", type);
+    msg.innerText = text;
+
+    chat.appendChild(msg);
+    chat.scrollTop = chat.scrollHeight;
 }

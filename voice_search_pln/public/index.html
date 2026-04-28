@@ -1,11 +1,36 @@
-<h1>Busca por Voz com PLN</h1>
+<!DOCTYPE html>
+<html lang="pt-br">
 
-<input type="text" id="input">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Chatbot PLN</title>
+    <link rel="stylesheet" href="style.css">
+</head>
 
-<button onclick="startVoice()">Ligar microfone</button>
+<body>
 
-<button onclick="search()">Buscar</button>
+    <div class="container">
 
-<pre id="result"></pre>
+        <header>
+            <h1>🤖 Chatbot</h1>
+        </header>
 
-<script src="script.js"></script>
+        <div id="chat"></div>
+
+        <div class="input-area">
+
+            <button class="mic" onclick="startVoice()">🎤</button>
+
+            <input type="text" id="input" placeholder="Digite sua mensagem..." />
+
+            <button class="send" onclick="sendMessage()">➤</button>
+
+        </div>
+
+    </div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
