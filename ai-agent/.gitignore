@@ -1,0 +1,18 @@
+# Ambiente virtual
+.venv/
+venv/
+env/
+.env
+my_agent/.env
+
+# Cache Python
+__pycache__/
+*.py[cod]
+
+# VS Code
+.vscode/
+
+# Logs
+*.log
+
+.adk
