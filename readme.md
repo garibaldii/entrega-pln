@@ -1,6 +1,6 @@
 # AWS Helper Agent 🤖☁️ + PLN Engine 🚀
 
-Este projeto é um ecossistema de IA focado em explicar AWS de forma didática. Ele combina a potência do **Google ADK** com um **Microserviço de PLN customizado** para garantir que a busca e o processamento de termos técnicos sejam precisos e eficientes.
+Este projeto é um ecossistema de IA . Ele combina a potência do **Google ADK** com um **Microserviço de PLN customizado** para garantir que a busca e o processamento de termos técnicos. Funcionando de forma semelhante ao modelo RAG
 
 ---
 
