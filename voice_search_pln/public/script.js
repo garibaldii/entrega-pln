@@ -1,4 +1,4 @@
-function startVoice(){
+function startVoice() {
     const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition
 
     const recognition = new SpeechRecognition()
@@ -6,7 +6,7 @@ function startVoice(){
 
     recognition.start()
 
-    recognition.onresult = function(event){
+    recognition.onresult = function (event) {
         const text = event.results[0][0].transcript
 
         document.getElementById("input").value = text
@@ -22,13 +22,33 @@ async function sendMessage() {
     addMessage(text, "user");
     input.value = "";
 
-    const res = await fetch(`/api/search?q=${encodeURIComponent(text)}`);
-    const data = await res.json();
+    // cria mensagem temporária
+    const loadingMsg = addMessage("Carregando...", "bot");
 
-    // ajuste aqui dependendo do seu backend
-    const answer = data.response || JSON.stringify(data);
+    try {
+        const res = await fetch(
+            "http://localhost:8000/chat",
+            {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify({
+                    message: text,
+                    user_id: "matheus"
+                })
+            }
+        );
 
-    addMessage(answer, "bot");
+        const data = await res.json();
+        const answer = data.response || JSON.stringify(data);
+
+        addMessage(answer, "bot");
+
+    } catch (error) {
+        addMessage("Erro ao processar a mensagem.", "bot");
+        console.error(error);
+    }
 }
 
 function addMessage(text, type) {

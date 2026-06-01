@@ -7,9 +7,9 @@ from google.genai import types
 
 from my_agent.agent import root_agent
 from dotenv import load_dotenv
+from fastapi.middleware.cors import CORSMiddleware
 
 load_dotenv()
-
 
 APP_NAME = "aws-helper"
 
@@ -17,6 +17,14 @@ APP_NAME = "aws-helper"
 app = FastAPI(
     title="AWS Helper Agent",
     version="1.0.0"
+)
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["*"],
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
 )
 
 
