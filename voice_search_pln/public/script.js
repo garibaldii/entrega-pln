@@ -26,8 +26,10 @@ async function sendMessage() {
     const loadingMsg = addMessage("Carregando...", "bot");
 
     try {
+        const apiURL = process.env.API_URL
+
         const res = await fetch(
-            "http://localhost:8000/chat",
+            `${apiURL}/chat`,
             {
                 method: "POST",
                 headers: {
