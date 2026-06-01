@@ -27,7 +27,7 @@ async function sendMessage() {
 
     try {
         const res = await fetch(
-            "http://localhost:8000/chat",
+            "https://agent-adk.onrender.com/chat",
             {
                 method: "POST",
                 headers: {
