@@ -26,10 +26,8 @@ async function sendMessage() {
     const loadingMsg = addMessage("Carregando...", "bot");
 
     try {
-        const apiURL = process.env.API_URL
-
         const res = await fetch(
-            `${apiURL}/chat`,
+            "/api/chat",
             {
                 method: "POST",
                 headers: {
@@ -43,9 +41,16 @@ async function sendMessage() {
         );
 
         const data = await res.json();
-        const answer = data.response || JSON.stringify(data);
 
-        addMessage(answer, "bot");
+        if (data.detail) {
+            addMessage("ERRO DO LADO DO SERVIDOR, TENTE NOVAMENTE MAIS TARDE", "bot")
+        } else {
+            const answer = data.response || JSON.stringify(data);
+
+            addMessage(answer, "bot");
+        }
+
+
 
     } catch (error) {
         addMessage("Erro ao processar a mensagem.", "bot");
