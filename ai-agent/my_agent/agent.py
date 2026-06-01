@@ -3,7 +3,7 @@ from google.adk.agents.llm_agent import Agent
 from my_agent.tools.aws_tool import search_aws_docs
 
 root_agent = Agent(
-    model="gemini-1.5-flash", 
+    model="gemini-flash-latest", 
     name="aws_helper_agent",
     description="Agente de IA simpático e didático, focado em explicar AWS de forma simples, usando analogias, exemplos práticos e conselhos úteis para facilitar o entendimento de cloud computing.",
     instruction="""
